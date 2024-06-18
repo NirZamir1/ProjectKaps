@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Example</title>
+</head>
+<body>
+    <div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="closeBtn">&times;</span>
+        <button id="loginBtn" onclick="authenticate()">Login blah with Instagram</button>
+        <script src = "instagramApiScript.js"></script>
+        <div id="results"></div>
+    </div>
+<script src="popUpScript.js"></script>
+</body>
+</div>
+</html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    z-index: 1; /* Sit on top */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.closeBtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>

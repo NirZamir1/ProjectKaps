@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram OAuth Callback</title>
+</head>
+<body>
+    <script>
+        // Extract the authorization code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authorizationCode = urlParams.get('code');
+        console.log(authorizationCode);
+        if (authorizationCode) {
+            // Send the authorization code to your server to exchange for an access token
+            fetch('http://localhost:3000/exchange-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code: authorizationCode })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.access_token) {
+                    console.log('Access Token:', data.access_token);
+                    // Handle the access token as needed
+                } else {
+                    console.error('Error fetching access token:', data);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            console.error('Authorization code not found in URL.');
+        }
+    </script>
+</body>
+</html>
